@@ -1,4 +1,3 @@
 django3/
 .vscode/
-__pycache__/
 *.pyc
