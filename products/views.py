@@ -6,12 +6,12 @@ from .models import *
 def products_list(request):
     products = Products.objects.all()
     params = {'products': products}
-    return render(request, 'products-list.html', params)
+    return render(request, 'products/products-list.html', params)
 
 def products_details(request, pk):
     product = get_object_or_404(Products, pk=pk)
     params = {'product': product}
-    return render(request, 'product-details.html', params)
+    return render(request, 'products/product-details.html', params)
 
 
 
