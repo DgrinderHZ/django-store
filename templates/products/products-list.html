@@ -29,15 +29,13 @@
             <h2>Featured Products</h2>
             <p>Refresh your look with pieces of our collection</p>
             <div>
-                {% if products %}
-                    {% for product in products%}
-                    <a href="{{ product.get_absolute_url }}">
-                        <h2>{{ product.title }}</h2>
-                    </a>
-                    {% endfor %}
-                {% else %}
-                <p>No products yet.</p>
-                {% endif %}
+                {% for product in products%}
+                <a href="{{ product.get_absolute_url }}">
+                    <h2>{{ product.title }}</h2>
+                </a>
+                {% empty %}
+                    <p>No products yet.</p>
+                {% endfor %}
             </div>
             <a href="#">More Products</a>
         </main>
