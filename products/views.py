@@ -27,3 +27,16 @@ def product_add(request):
     else:
         form = AddProductForm()
     return render(request, "products/product-add.html", {'form': form})
+
+
+def product_edit(request, pk):
+    product = get_object_or_404(Product, pk=pk)
+
+    if request.method == 'POST':
+        form = AddProductForm(request.POST, instance=product)
+        if form.is_valid():
+            form.save()
+            return render(request, "products/product-added.html")
+    else:
+        form = AddProductForm(instance=product)
+    return render(request, "products/product-add.html", {'form': form})
