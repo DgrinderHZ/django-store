@@ -1,38 +1,16 @@
-{% load static %}
-<!DOCTYPE html>
-<html>
-    <head><link rel="stylesheet" href="normalize.css">
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>STORE</title>
-        <link href="https://fonts.googleapis.com/css?family=Domine|Questrial" rel="stylesheet">
-        <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-    </head>
-    <body>
-        <header>
-            <h1>
-                <a href="{% url 'products_list' %}">STORE</a>
-            </h1>
-            <nav>
-                <ul class="navbar">
-                    <li><a href="#">home</a></li>
-                    <li><a href="#">featured</a></li>
-                    <li><a href="#">women</a></li>
-                    <li><a href="#">men</a></li>
-                    <li><a href="#">kids</a></li>
-                    <li><a href="#">more</a></li>
-                </ul>
-            </nav>
-        </header>
+{% extends 'base.html' %}
+
+{% block page-title %} Products Details {% endblock %}
+
+{% block content %}
+
+<h2>Product Details</h2>
+<img src="{{product.image.url}}" />
+<p>{{ product.brand }}</p>
+<h3>{{ product.title }}</h3>
+<p>{{ product.price }}</p>
+<p>{{ product.description }}</p>
+<p>{{ product.created_at }}</p>
+
+{% endblock %}
         
-        <main>
-            <h2>Product Details</h2>
-            <img src="{{product.image.url}}" />
-            <h3>{{ product.title }}</h3>
-            <p>{{ product.description }}</p>
-        </main>
-        <footer>
-            <p>&copy; 2018 All Rights Reserved</p>
-        </footer>
-    </body>
-</html>
