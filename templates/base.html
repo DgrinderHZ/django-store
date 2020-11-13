@@ -1,37 +1,58 @@
 {% load static %}
 <!DOCTYPE html>
-<html>
-    <head><link rel="stylesheet" href="normalize.css">
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>{% block page-title %} STORE {% endblock %}</title>
-        <link href="https://fonts.googleapis.com/css?family=Domine|Questrial" rel="stylesheet">
-        <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-    </head>
-    <body>
+<html lang="en">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/normalize.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link href="https://fonts.googleapis.com/css?family=Questrial|Domine" rel="stylesheet" />
+    <title>{% block head-title %}STORE{% endblock %}</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <!--HEADER-->
         <header>
-            <h1>
-                <a href="{% url 'products_list' %}">STORE</a>
+            <h1 id="logo">
+                <a href="{% url 'home' %}">STORE</a>
             </h1>
-            <nav>
+            
+                <nav>
                 <ul class="navbar">
                     <li><a href="#">home</a></li>
                     <li><a href="#">featured</a></li>
-                    <li><a href="#">women</a></li>
-                    <li><a href="#">men</a></li>
-                    <li><a href="#">kids</a></li>
-                    <li><a href="#">more</a></li>
                     <li><a href="{% url 'product_add' %}">add product</a></li>
                 </ul>
             </nav>
+            
+            <div id="controls">
+                <div id="cart">
+                </div>
+            </div>
         </header>
 
+        <!--MAIN-->
         <main>
-            {% block content %}
-            {% endblock %}
+            {% block content %} {% endblock %}
         </main>
-        <footer>
-            <p>&copy; 2018 All Rights Reserved</p>
-        </footer>
-    </body>
+    </div>
+
+    <!--FOOTER-->
+    <footer>
+        <a href="#" id="scroll-up">
+            <i class="fas fa-chevron-up"></i>
+        </a>
+        <!--2-->
+        <p>&copy; 2020 STORE All Rights Reserved.</p>
+        <!--2-->
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
 </html>

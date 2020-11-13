@@ -4,8 +4,12 @@
 
 {% block content %}
 
-<p>Product added successfully!</p>
-<p><a href="{% url 'home' %}">Home</a></p>
+<section>
+    <div>
+        <h1 class="section-headline">Product added Successfully!</h1>
+        <a class="back" href="{% url 'home' %}">Continue to homepage</a>
+    </div>
+</section>
 
 {% endblock %}
 
