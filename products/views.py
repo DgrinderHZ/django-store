@@ -40,3 +40,8 @@ def product_edit(request, pk):
     else:
         form = AddProductForm(instance=product)
     return render(request, "products/product-add.html", {'form': form})
+
+
+def product_delete(request, pk):
+    get_object_or_404(Product, pk=pk).delete()
+    return render(request, "products/product-deleted.html")
