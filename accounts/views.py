@@ -16,12 +16,12 @@ def signup(request):
             user = form.save()
             user.is_active = False
             user.save()
-            send_confirmation_email(request, user)
 
             profile = profile_form.save(commit=False)
             profile.user = user
 
             profile.save()
+            send_confirmation_email(request, user)
 
             return render(request, 'registration/signup_success.html')
     else:
