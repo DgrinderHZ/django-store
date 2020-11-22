@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block page-title %} Cart {% endblock %}
+
+{% block content %}
+
+    {% for product in products %}
+        <p> {{ product.title | capfirst }} <span><a href="{% url 'remove_from_cart' product_id=product.id %}">Remove</a></span></p>
+    {% empty %}
+        <p>No products yet.</p>
+    {% endfor %}
+    <p><a href="{% url 'remove_all_from_cart' %}">Remove all</a></p>
+{% endblock %}
+        
