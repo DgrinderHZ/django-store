@@ -12,7 +12,7 @@ def cart(request):
     user = request.user
     products = user.cart.items.all()
     total_price = products.aggregate(total_price=Sum('price'))['total_price']
-    return render(request, 
+    return render(request,
                   'carts/cart.html',
                   {
                       'products': products,
