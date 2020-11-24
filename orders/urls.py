@@ -18,5 +18,5 @@ from django.urls import path
 from .views import order
 
 urlpatterns = [
-    path('orders/order', order, name='order'),
+    path('orders/order/', order, name='order'),
 ] 
