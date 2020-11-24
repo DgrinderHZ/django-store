@@ -1,0 +1,16 @@
+<!-- templates/registration/password_reset_form.html -->
+{% extends 'base.html' %}
+
+{% block head-title %}Order Address{% endblock %}
+
+{% block content %}
+  <p>Enter your address below, and we'll email you your order details.</p>
+
+  <form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <p>
+        <input type="submit" value="Finish">
+    </p>
+  </form>
+{% endblock %}
