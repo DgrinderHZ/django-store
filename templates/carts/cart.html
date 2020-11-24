@@ -9,7 +9,11 @@
     {% empty %}
         <p>No products yet.</p>
     {% endfor %}
-    <p><a href="{% url 'remove_all_from_cart' %}">Remove all</a></p>
+    
+    {% if products %} 
+        <p><a href="{% url 'remove_all_from_cart' %}">Remove all</a></p>
+    {% endif %}
+    
     <p><h4>Total price: {{ total_price }}</h4> <a href="{% url 'order' %}">Order</a></p>
 {% endblock %}
         
