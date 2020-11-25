@@ -9,7 +9,7 @@ def send_confirmation_email(request, user):
     uid = user.pk
     domain = get_current_site(request)
 
-    subject = 'Activate your account'
+    subject = 'Activate Your Account'
     message = render_to_string('registration/account-activation-email.html',
                                {
                                    'user': user,

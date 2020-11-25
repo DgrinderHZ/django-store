@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.http.response import HttpResponseBadRequest
 
 from .utils import send_confirmation_email
-from .forms import SignUpForm, UserProfileForm
+from .forms import SignUpForm
 from .tokens import confirm_email_token_generator
 from .models import User
 
@@ -11,24 +11,19 @@ from .models import User
 def signup(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
-        profile_form = UserProfileForm(request.POST)
-        if form.is_valid() and profile_form.is_valid():
+        if form.is_valid():
             user = form.save()
+            # TODO dont save 2 times (different mail is a must)
             user.is_active = False
             user.save()
 
-            profile = profile_form.save(commit=False)
-            profile.user = user
-
-            profile.save()
             send_confirmation_email(request, user)
 
             return render(request, 'registration/signup_success.html')
     else:
         form = SignUpForm()
-        profile_form = UserProfileForm()
     return render(request, 'registration/signup.html',
-                  {'form': form, 'profile_form': profile_form})
+                  {'form': form})
 
 
 def activate_email(request, uid, token):
