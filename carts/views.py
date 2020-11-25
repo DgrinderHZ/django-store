@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, get_object_or_404, get_list_or_404
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.db.models import Sum
 
@@ -40,9 +40,6 @@ def remove_from_cart(request, product_id):
 
 @login_required
 def remove_all_from_cart(request):
-    products = get_list_or_404(Product)
     cart = Cart.objects.get(user=request.user)
-    for product in products:
-        cart.items.remove(product)
-
+    cart.items.clear()
     return redirect('cart')
