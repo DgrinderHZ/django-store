@@ -23,7 +23,9 @@
                 <ul class="navbar">
                     <li><a href="{% url 'home' %}">home</a></li>
                     <li><a href="{% url 'home' %}">featured</a></li>
+                    {% if user.is_superuser%}
                     <li><a href="{% url 'product_add' %}">add product</a></li>
+                    {% endif %}
                 </ul>
             </nav>
             
