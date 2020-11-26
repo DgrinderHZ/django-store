@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block head-title %}Orders List{% endblock %}
+
+{% block content %}
+    {% for order in orders %}
+        <h4>Order {{ order.id }} by {{ order.user }} to address {{ order.address }}</h4>
+        {% for item in order.items.all %}
+            <p>{{item.title | capfirst }}  ${{item.price | floatformat:2 }}</p>
+        {% endfor %}
+        <p class="product-price">Order total price: {{ order.total_price }}</p>
+    {% empty %}
+    <p>No orders yet.</p>
+    {% endfor %}
+{% endblock %}
