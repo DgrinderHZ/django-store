@@ -6,7 +6,7 @@ from .settings import *
 
 SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = True
-ALLOWED_HOSTS = ['.herokuapp.com']
+ALLOWED_HOSTS = ['zeek-store.herokuapp.com']
 DATABASE_URL = os.environ.get('DATABASE_URL')
 
 DATABASES = {
