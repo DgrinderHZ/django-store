@@ -39,7 +39,7 @@ def remove_from_cart(request, product_id):
 
 
 @login_required
-def remove_all_from_cart(request):
+def clear_cart(request):
     cart = Cart.objects.get(user=request.user)
     cart.items.clear()
     return redirect('cart')

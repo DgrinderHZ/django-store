@@ -4,13 +4,17 @@
 {% block head-title %}Order Address{% endblock %}
 
 {% block content %}
-  <p>Enter your address below, and we'll email you your order details.</p>
-
-  <form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <p>
-        <input type="submit" value="Finish">
-    </p>
-  </form>
+<section class="form-section"></section>
+  <h2 class="section-headline">Make Order</h2>
+  <p class="section-description">Please fill in your address to complete your order.</p>
+  <div class="form">
+    <form method="POST">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <p>
+          <input type="submit" value="Order">
+      </p>
+    </form>
+  </div>
+</section>
 {% endblock %}

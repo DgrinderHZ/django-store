@@ -53,6 +53,7 @@ header{
 #controls #cart a{
     color: #222; 
 }
+
 #cart #cart-counter{ 
     width: 15px; /*2*/
     line-height: 15px; /*2*/
@@ -111,7 +112,7 @@ header{
     line-height: 50px;
     transition-duration: .3s;
 }
-.navbar a:hover{
+.navbar a:hover, #cart:hover, #logout:hover, #login:hover{
     background-color: #ddd;
 }
 
@@ -519,9 +520,25 @@ span.helptext {
     cursor: pointer;
     transition: background-color ease-in-out .3s;
 }
-.cart-btn-box a:hover{
+
+.cart-btn-box a:hover, .cart a.checkout:hover{
     background-color: #0cbb88;
 }
+
+.cart-btn-box a.edit {
+    background-color:  #0cbb88;
+}
+.cart-btn-box a.edit:hover {
+    background: #02e9a7;
+}
+
+.cart-btn-box a.clear {
+    background-color: #F44336;
+}
+.cart-btn-box a.clear:hover {
+    background: #f30;
+}
+
 
 /*Footer Rules*/
 footer{
@@ -620,7 +637,7 @@ footer p{
     line-height: .5;
 }
 
-.cart a.remove:hover {
+.cart a.remove:hover, .cart a.clear:hover {
     background: #f30;
 }
 

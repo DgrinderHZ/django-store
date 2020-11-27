@@ -14,7 +14,11 @@
             <p>
                 <input type="submit" value="Log in!">
             </p>
-            <p><a href="{% url 'password_reset' %}">Reset Password</a></p>
+            <p>
+                Don't have an account?<a href="{% url 'signup' %}">Sign Up!</a>
+                <br/>
+                You forgot your password?<a href="{% url 'password_reset' %}">Reset password!</a>
+            </p>
         </form>
     </div>
 </section>

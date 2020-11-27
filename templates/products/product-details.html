@@ -3,7 +3,6 @@
 {% block page-title %} {{product.title | capfirst }} {% endblock %}
 
 {% block content %}
-
 <section class="single-product-details clearfix">
     <div class="product-details-img">
         <img src="{{product.image.url}}" alt="" />
@@ -15,7 +14,15 @@
         <p class="product-desc">
             {{product.description}}
         </p>
-        <a href="{% url 'add_to_cart' product_id=product.id %}" >Add to cart</a>
+        <div class="cart-btn-box">
+            <a href="{% url 'add_to_cart' product_id=product.id %}" >Add to cart</a>
+        </div>
+        {% if user.is_superuser %}
+            <div class="cart-btn-box">
+                <a href="{% url 'product_edit' pk=product.id %}" class="edit">Edit</a>
+                <a href="{% url 'product_delete' pk=product.id %}" class="clear">Remove</a>
+            </div>
+        {% endif %}
     </div>
 </section>
 

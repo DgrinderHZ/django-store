@@ -14,11 +14,11 @@ Class-based views
 
 from django.urls import path
 
-from .views import add_to_cart, cart, remove_from_cart, remove_all_from_cart
+from .views import add_to_cart, cart, remove_from_cart, clear_cart
 
 urlpatterns = [
     path('carts/add/<int:product_id>/', add_to_cart, name='add_to_cart'),
     path('carts/remove/<int:product_id>/', remove_from_cart, name='remove_from_cart'),
-    path('carts/remove-all/', remove_all_from_cart, name='remove_all_from_cart'),
+    path('carts/clear_cart/', clear_cart, name='clear_cart'),
     path('carts/cart/', cart, name='cart'),
 ]

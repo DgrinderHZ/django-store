@@ -2,12 +2,10 @@
 {% block head-title %}Orders List{% endblock %}
 
 {% block content %}
-
     {% for order in orders %}
         <h4>Order {{ order.id }} by {{ order.user }} to address {{ order.address }}</h4>
         <p>Total price: {{ order.total_price }}</p>
     {% empty %}
     <li>No orders yet.</li>
     {% endfor %}
-
 {% endblock %}
