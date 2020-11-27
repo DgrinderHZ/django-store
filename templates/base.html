@@ -19,6 +19,8 @@
             <h1 id="logo">
                 <a href="{% url 'home' %}">STORE</a>
             </h1>
+
+            <!--
             <nav>
                 <ul class="navbar">
                     <li><a href="{% url 'home' %}">home</a></li>
@@ -28,17 +30,25 @@
                     {% endif %}
                 </ul>
             </nav>
+            -->
             
             <div id="controls">
                 <div id="cart">
-                        <a style="display: inline-block;" href="{% url 'cart' %}">show cart!</a>
+                    <!--1-->
+                    <a href="{% url 'cart' %}"><i class="fas fa-shopping-cart"></i></a>
+
+                    {% if request.user.cart.items.all|length > 0 %}
+                    <span id="cart-counter">
+                        {{ request.user.cart.items.all|length }}
+                    </span>
+                    {% endif %}
                 </div>
+
                 {% if user.is_authenticated %}
-                        <h5 style="display: inline-block;">Hi, {{user.username}}</h5>
-                        <a style="display: inline-block;" href="{% url 'logout' %}">Log out!</a>
-                {% else %}
-                    <a style="display: inline-block;" href="{% url 'login' %}">Log in!</a>
-                    <a style="display: inline-block;" href="{% url 'signup' %}">sign up!</a>
+                <p>Hi, {{ user.username }}</p>
+                <input type="button" id="logout" onclick="location.href='{% url 'logout' %}'" value="Log out" />
+                {% else  %}
+                <input type="button" id="login" onclick="location.href='{% url 'login' %}'" value="Log in" />
                 {% endif %}
             </div>
         </header>
