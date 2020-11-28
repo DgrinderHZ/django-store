@@ -323,6 +323,7 @@ ul.sub-menu {
     color: #FDB45E;
 }
 
+
 .fa-angle-down{
   padding-left: 5px; 
 }
@@ -2521,3 +2522,17 @@ h2.title {
 }
 
 
+
+
+.shop-menu ul li a span{ 
+  width: 15px;
+  line-height: 15px;
+  background-color: #F44336 !important;
+  color: #FFF;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 50%;
+  position: absolute;
+  top: -7px;
+  right: 28px;
+}
