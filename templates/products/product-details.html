@@ -3,28 +3,57 @@
 {% block page-title %} {{product.title | capfirst }} {% endblock %}
 
 {% block content %}
-<section class="single-product-details clearfix">
-    <div class="product-details-img">
-        <img src="{{product.image.url}}" alt="" />
-    </div>
-    <div class="product-details-desc">
-        <div class="product-brand">{{product.brand | capfirst }}</div>
-        <h2 class="product-name">{{product.title | capfirst }}</h2>
-        <div class="product-price">${{product.price | floatformat:2 }}</div>
-        <p class="product-desc">
-            {{product.description}}
-        </p>
-        <div class="cart-btn-box">
-            <a href="{% url 'add_to_cart' product_id=product.id %}" >Add to cart</a>
-        </div>
-        {% if user.is_superuser %}
-            <div class="cart-btn-box">
-                <a href="{% url 'product_edit' pk=product.id %}" class="edit">Edit</a>
-                <a href="{% url 'product_delete' pk=product.id %}" class="clear">Remove</a>
+<section>
+    <div class="container">
+        <div class="row">
+
+
+            <div class="col-sm-9 padding-right">
+                <div class="product-details">
+                    <!--product-details-->
+                    <div class="col-sm-5">
+                        <div class="view-product">
+                            <img src="{{product.image.url}}" alt="" />
+                            <h3>ZOOM</h3>
+                        </div>
+
+                    </div>
+                    <div class="col-sm-7">
+                        <div class="product-information">
+                            <!--/product-information-->
+                            <img src="images/product-details/new.jpg" class="newarrival" alt="" />
+                            <h2>{{product.title | capfirst }}</h2>
+                            <p> {{product.description}}</p>
+                            <img src="images/product-details/rating.png" alt="" />
+                            <span>
+                                <span>US ${{product.price | floatformat:2 }}</span>
+                                <input type="text" value="3" />
+                                <a href="{% url 'add_to_cart' product_id=product.id %}">
+                                    <button type="button" class="btn btn-fefault cart">
+                                        <i class="fa fa-shopping-cart"></i>
+                                        Add to cart
+                                    </button></a>
+
+                            </span>
+                            <p><b>Availability:</b> In Stock</p>
+                            <p><b>Condition:</b> New</p>
+                            <p><b>Brand:</b>{{product.brand | capfirst }}</p>
+                            <a href=""><img src="images/product-details/share.png" class="share img-responsive"
+                                    alt="" /></a>
+                            {% if user.is_superuser %}
+                            <div class="cart-btn-box">
+                                <a href="{% url 'product_edit' pk=product.id %}" class="btn btn-fefault cart">Edit</a>
+                                <a href="{% url 'product_delete' pk=product.id %}" class="btn btn-fefault cart">Remove</a>
+                            </div>
+                            {% endif %}
+                        </div>
+                        <!--/product-information-->
+                    </div>
+                </div>
+                <!--/product-details-->
             </div>
-        {% endif %}
+        </div>
     </div>
 </section>
 
 {% endblock %}
-        
