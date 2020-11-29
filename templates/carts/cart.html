@@ -3,53 +3,93 @@
 {% block page-title %} Cart {% endblock %}
 
 {% block content %}
-<section class="clearfix">
-    <h2 class="section-headline">Cart</h2>
-    <p class="section-description">
-            Please check your products before checkout.
-    </p>
-    <div class="cart">
-        <ul>
-            {% for product in products %}
-            <li class="item">
-                <div class="cart-product-img">
-                    <img src="{{ product.image.url }}" alt="" />
-                </div>
-                <div>
-                    <h3>{{ product.title | capfirst }}</h3>
-                </div>
-                <div>
-                    <p>${{ product.price | floatformat:2 }}</p>
-                </div>
-                <div>
-                    <a href="{% url 'remove_from_cart' product_id=product.id %}" class="remove">x</a>
-                </div>
-            </li>
-            {% empty %}
-            <li>
-                <p>No products yet.</p>
-            </li>
-            {% endfor %}
-
-            {% if products|length > 0 %}
-            <li class="item" id="cart-summary">
-                <div>
-                    <p></p>
-                </div>
-                <div>
-                    <h3>Total</h3>
-                </div>
-                <div>
-                    <p>${{ total_price }}</p>
-                </div>
-                <div>
-                    <a href="{% url 'order' %}" class="checkout">Checkout</a>
-                    <a href="{% url 'clear_cart' %}" class="clear">Clear Cart</a>
-                </div>
-            </li>
-            {% endif%}
-        </ul>
+<section id="cart_items">
+    <div class="container">
+        <div class="breadcrumbs">
+            <ol class="breadcrumb">
+                <li><a href="#">Home</a></li>
+                <li class="active">Shopping Cart</li>
+            </ol>
+        </div>
+        {% for product in products %}
+        <div class="table-responsive cart_info">
+            <table class="table table-condensed">
+                <thead>
+                    <tr class="cart_menu">
+                        <td class="image">Item</td>
+                        <td class="description"></td>
+                        <td class="price">Price</td>
+                        <td class="quantity">Quantity</td>
+                        <td class="total">Total</td>
+                        <td></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="cart_product">
+                            <a href=""><img src="{{ product.image.url }}" alt=""></a>
+                        </td>
+                        <td class="cart_description">
+                            <h4><a href="">{{ product.title | capfirst }}</a></h4>
+                            <p>{{ product.brande | capfirst }}</p>
+                        </td>
+                        <td class="cart_price">
+                            <p>${{ product.price | floatformat:2 }}</p>
+                        </td>
+                        <td class="cart_quantity">
+                            <div class="cart_quantity_button">
+                                <a class="cart_quantity_up" href="#"> + </a>
+                                <input class="cart_quantity_input" type="text" name="quantity" value="1"
+                                    autocomplete="off" size="2">
+                                <a class="cart_quantity_down" href="#"> - </a>
+                            </div>
+                        </td>
+                        <td class="cart_total">
+                            <p class="cart_total_price"></p>
+                        </td>
+                        <td class="cart_delete">
+                            <a class="cart_quantity_delete" href="{% url 'remove_from_cart' product_id=product.id %}"><i
+                                    class="fa fa-times"></i></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        {% empty %}
+        <p>No products yet.</p>
+        {% endfor %}
     </div>
 </section>
+<!--/#cart_items-->
+
+{% if products|length > 0 %}
+<section id="do_action">
+    <div class="container">
+        <div class="heading">
+            <h3>What would you like to do next?</h3>
+            <p>Choose if you have a discount code or reward points you want to use or would like to estimate your
+                delivery cost.</p>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="total_area">
+                    <ul>
+                        <li>Cart Sub Total <span>${{ total_price }}</span></li>
+                        <li>Shipping Cost <span>Free</span></li>
+                        <li>Total <span>${{ total_price }}</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="total_area">
+                    <a class="btn btn-default check_out" href="{% url 'order' %}">Check Out</a>
+                    <a class="btn btn-default update" href="{% url 'clear_cart' %}">Clear Cart</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--/#do_action-->
+{% endif%}
+
 {% endblock %}
-        
