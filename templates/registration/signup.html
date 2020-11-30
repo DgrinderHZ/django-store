@@ -3,19 +3,19 @@
 {% block head-title %}Add/Edit Product{% endblock %}
 
 {% block content %}
-<section class="form-section">
-    <h2 class="section-headline">Sign up!</h2>
-    <p class="section-description">
-        Please fill in your infos.
-    </p>
-    <div class="form">
-        <form action="" method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <p>
-                <input type="submit" value="Sign Up!">
-            </p>
-        </form>
-    </div>
-</section>
+<section id="form"><!--form-->
+            
+            <div class="col-sm-7">
+                <div class="signup-form"><!--sign up form-->
+                    <h2>New User Signup!</h2>
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button type="submit" class="btn btn-default">Sign Up!</button>
+                    </form>
+                </div><!--/sign up form-->
+            </div>
+
+</section><!--/form-->
+
 {% endblock %}

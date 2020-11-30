@@ -1431,6 +1431,8 @@ h2.title {
   margin-bottom: 185px;
   margin-top: 185px;
   overflow: hidden;
+  position: relative;
+  right: -25%;
 }
 
 .login-form {
@@ -2522,7 +2524,7 @@ h2.title {
 }
 
 
-
+/* DgrinderHZ custom */
 
 .shop-menu ul li a span{ 
   width: 15px;
@@ -2536,3 +2538,4 @@ h2.title {
   top: -7px;
   right: 28px;
 }
+

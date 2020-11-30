@@ -2,24 +2,29 @@
 {% block head-title %}Log In!{% endblock %}
 
 {% block content %}
-<section class="form-section">
-    <h2 class="section-headline">Log In!</h2>
-    <p class="section-description">
-        Please fill in your email and your password.
-    </p>
-    <div class="form">
-        <form action="" method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <p>
-                <input type="submit" value="Log in!">
-            </p>
-            <p>
-                Don't have an account?<a href="{% url 'signup' %}">Sign Up!</a>
-                <br/>
-                You forgot your password?<a href="{% url 'password_reset' %}">Reset password!</a>
-            </p>
-        </form>
+<section id="form">
+    <!--form-->
+    <div class="col-sm-4">
+        <div class="login-form">
+            <!--login form-->
+            <h2>Please fill in your email and your password.</h2>
+            <form action="" method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-default">
+                    Log in!
+                </button>
+
+                <p>
+                    Don't have an account? <a href="{% url 'signup' %}">Sign Up!</a>
+                    <br />
+                    You forgot your password? <a href="{% url 'password_reset' %}">Reset password!</a>
+                </p>
+            </form>
+        </div>
+        <!--/login form-->
     </div>
+
+
 </section>
 {% endblock %}
