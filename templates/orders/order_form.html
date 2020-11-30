@@ -1,20 +1,37 @@
-<!-- templates/registration/password_reset_form.html -->
+<!-- checkout   -->
 {% extends 'base.html' %}
 
 {% block head-title %}Order Address{% endblock %}
 
 {% block content %}
-<section class="form-section"></section>
-  <h2 class="section-headline">Make Order</h2>
-  <p class="section-description">Please fill in your address to complete your order.</p>
-  <div class="form">
-    <form method="POST">
-      {% csrf_token %}
-      {{ form.as_p }}
-      <p>
-          <input type="submit" value="Order">
-      </p>
-    </form>
+
+<section id="cart_items">
+  <div class="container">
+    <div class="breadcrumbs">
+      <ol class="breadcrumb">
+        <li><a href="#">Home</a></li>
+        <li class="active">Check out</li>
+      </ol>
+    </div>
+    <!--/breadcrums-->
   </div>
+
+  <section id="form">
+    <!--form-->
+    <div class="col-sm-4">
+      <div class="login-form">
+        <!--login form-->
+        <p>Shopper Information</p>
+        <form method="POST">
+          {% csrf_token %}
+          {{ form.as_p }}
+        </form>
+        <input type="submit" value="Order" class="btn btn-primary">
+      </div>
+    </div>
+    <!--/login form-->
+  </section>
 </section>
+
+<!--/#cart_items-->
 {% endblock %}

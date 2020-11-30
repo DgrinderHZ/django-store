@@ -1428,8 +1428,8 @@ h2.title {
 
 #form {
   display: block;
-  margin-bottom: 185px;
-  margin-top: 185px;
+  margin-bottom: 5px;
+  margin-top: 5px;
   overflow: hidden;
   position: relative;
   right: -25%;
