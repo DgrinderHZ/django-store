@@ -1535,7 +1535,6 @@ h2.title {
 
 .breadcrumbs .breadcrumb {
   background:transparent;
-  margin-bottom: 75px;
   padding-left: 0;
 }
 
@@ -2539,3 +2538,13 @@ h2.title {
   right: 28px;
 }
 
+.cart_product a img {
+  height: 150px;
+    width: 130px;
+}
+
+.done{
+  position: relative;
+    right: -25%;
+    padding: 0px 0px 35px 0px;
+}

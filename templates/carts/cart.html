@@ -11,7 +11,7 @@
                 <li class="active">Shopping Cart</li>
             </ol>
         </div>
-        {% for product in products %}
+
         <div class="table-responsive cart_info">
             <table class="table table-condensed">
                 <thead>
@@ -25,6 +25,7 @@
                     </tr>
                 </thead>
                 <tbody>
+                    {% for product in products %}
                     <tr>
                         <td class="cart_product">
                             <a href=""><img src="{{ product.image.url }}" alt=""></a>
@@ -52,12 +53,12 @@
                                     class="fa fa-times"></i></a>
                         </td>
                     </tr>
+                    {% empty %}
+                    <p>No products yet.</p>
+                    {% endfor %}
                 </tbody>
             </table>
         </div>
-        {% empty %}
-        <p>No products yet.</p>
-        {% endfor %}
     </div>
 </section>
 <!--/#cart_items-->
