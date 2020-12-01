@@ -66,11 +66,6 @@
 {% if products|length > 0 %}
 <section id="do_action">
     <div class="container">
-        <div class="heading">
-            <h3>What would you like to do next?</h3>
-            <p>Choose if you have a discount code or reward points you want to use or would like to estimate your
-                delivery cost.</p>
-        </div>
         <div class="row">
             <div class="col-sm-6">
                 <div class="total_area">
@@ -78,13 +73,10 @@
                         <li>Cart Sub Total <span>${{ total_price }}</span></li>
                         <li>Shipping Cost <span>Free</span></li>
                         <li>Total <span>${{ total_price }}</span></li>
+                        <a class="btn btn-default check_out" href="{% url 'order' %}">Check Out</a>
+                        <a class="btn btn-default update" href="{% url 'clear_cart' %}">Clear Cart</a>
                     </ul>
-                </div>
-            </div>
-            <div class="col-sm-6">
-                <div class="total_area">
-                    <a class="btn btn-default check_out" href="{% url 'order' %}">Check Out</a>
-                    <a class="btn btn-default update" href="{% url 'clear_cart' %}">Clear Cart</a>
+                    
                 </div>
             </div>
         </div>
