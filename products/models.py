@@ -1,5 +1,7 @@
 from django.db import models
 from django.urls import reverse
+from django.db.models.signals import post_delete
+from django.dispatch import receiver
 
 # Create your models here.
 
@@ -17,3 +19,8 @@ class Product(models.Model):
 
     def __str__(self):
         return self.title
+
+
+@receiver(post_delete, sender=Product)
+def submission_delete(sender, instance, **kwargs):
+    instance.image.delete(False)
