@@ -113,13 +113,12 @@
                                 <li><a href="{% url 'home' %}" class="active">Home</a></li>
                                 <li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
-                                        <li><a href="{% url 'cart' %}">Cart</a></li>
+										<li><a href="{% url 'cart' %}">Cart</a></li>
+										<li><a href="{% url 'order' %}">Chckout</a></li>
                                     </ul>
                                 </li>
                                 {% if user.is_superuser%}
                                 <li><a href="{% url 'product_add' %}">Add a product</a></li>
-                                {% else %}
-                                <li><a href="contact-us.html">Contact</a></li>
                                 {% endif %}
                             </ul>
                         </div>
