@@ -1431,8 +1431,6 @@ h2.title {
   margin-bottom: 5px;
   margin-top: 5px;
   overflow: hidden;
-  position: relative;
-  right: -25%;
 }
 
 .login-form {
@@ -1892,6 +1890,7 @@ h2.title {
   border-radius: 0;
   margin-right: 15px;
   margin-top: 20px;
+  color: #fff;
 }
 
 
@@ -2398,6 +2397,7 @@ h2.title {
   border: 0 none;
   border-radius: 0;
   margin-top: 16px;
+  color: #fff;
 }
 
 .blank-arrow {
@@ -2547,4 +2547,19 @@ h2.title {
   position: relative;
     right: -25%;
     padding: 0px 0px 35px 0px;
+}
+
+main {
+  max-width: 960px;
+  text-align: center;
+  margin: 90px auto 90px auto;
+}
+
+.label-left{
+  text-align: left;
+}
+
+.center{
+  position: relative;
+  right: -25%;
 }

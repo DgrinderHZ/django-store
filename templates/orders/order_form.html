@@ -4,7 +4,6 @@
 {% block head-title %}Order Address{% endblock %}
 
 {% block content %}
-
 <section id="cart_items">
   <div class="container">
     <div class="breadcrumbs">
@@ -15,14 +14,16 @@
     </div>
     <!--/breadcrums-->
   </div>
-
+</section>
+<main>
   <section id="form">
     <!--form-->
-    <div class="col-sm-4">
+    <div class="col-sm-7 center">
       <div class="login-form">
         <!--login form-->
+        <h1>Complet Order</h1>
         <p>Shopper Information</p>
-        <form method="POST">
+        <form method="POST" class="label-left">
           {% csrf_token %}
           {{ form.as_p }}
           <input type="submit" value="Order" class="btn btn-primary">
@@ -31,7 +32,7 @@
     </div>
     <!--/login form-->
   </section>
-</section>
+</main>
 
 <!--/#cart_items-->
 {% endblock %}
