@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.views.generic import DetailView
 from .models import Product
 from .forms import AddProductForm
 
@@ -11,10 +12,10 @@ def products_list(request):
     return render(request, 'products/products-list.html', params)
 
 
-def products_details(request, pk):
-    product = get_object_or_404(Product, pk=pk)
-    params = {'product': product}
-    return render(request, 'products/product-details.html', params)
+class ProductDetailView(DetailView):
+    model = Product
+    template_name = 'products/product-details.html'
+    context_object_name = 'product'
 
 
 def product_add(request):
