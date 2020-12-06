@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.views.generic import DetailView
+from django.views.generic import DetailView, CreateView
 from .models import Product
 from .forms import AddProductForm
 
@@ -18,18 +18,17 @@ class ProductDetailView(DetailView):
     context_object_name = 'product'
 
 
-def product_add(request):
-    if request.user.is_authenticated and request.user.is_superuser:
-        if request.method == 'POST':
-            form = AddProductForm(request.POST, request.FILES)
-            if form.is_valid():
-                form.save()
-                return render(request, "products/product-added.html")
+class ProductCreateView(CreateView):
+    model = CreateView
+    form_class = AddProductForm
+    template_name = "products/product-add.html"
+
+    def dispatch(self, request, *args, **kwargs):
+        if request.user.is_authenticated and request.user.is_superuser:
+            return super().dispatch(request, *args, **kwargs)
         else:
-            form = AddProductForm()
-        return render(request, "products/product-add.html", {'form': form})
-    else:
-        return redirect('products_list')
+            return redirect('products_list')
+
 
 
 def product_edit(request, pk):

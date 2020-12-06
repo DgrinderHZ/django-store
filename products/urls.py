@@ -14,12 +14,12 @@ Class-based views
 from django.urls import path
 
 from products.views import products_list, ProductDetailView
-from products.views import product_add, product_edit, product_delete
+from products.views import ProductCreateView, product_edit, product_delete
 
 urlpatterns = [
     path('products/', products_list, name='products_list'),
     path('products/<int:pk>/', ProductDetailView.as_view(), name='product_details'),
-    path('products/add/', product_add, name='product_add'),
+    path('products/add/', ProductCreateView.as_view(), name='product_add'),
     path('products/edit/<int:pk>/', product_edit, name='product_edit'),
     path('products/delete/<int:pk>/', product_delete, name='product_delete')
 ]
