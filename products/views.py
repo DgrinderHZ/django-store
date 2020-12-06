@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.views.generic import DetailView, CreateView, UpdateView
+from django.views.generic import DetailView, CreateView, UpdateView, DeleteView
 from .models import Product
 from .forms import AddProductForm
 
@@ -42,10 +42,11 @@ class ProductUpdateView(UpdateView):
             return redirect('products_list')
 
 
-clas Product
-def product_delete(request, pk):
-    if request.user.is_authenticated and request.user.is_superuser:
-        get_object_or_404(Product, pk=pk).delete()
-        return render(request, "products/product-deleted.html")
-    else:
-        return redirect('products_list')
+class ProductDeleteView(DeleteView):
+    model = Product
+
+    def dispatch(self, request, *args, **kwargs):
+        if request.user.is_authenticated and request.user.is_superuser:
+            return super().dispatch(request, *args, **kwargs)
+        else:
+            return redirect('products_list')

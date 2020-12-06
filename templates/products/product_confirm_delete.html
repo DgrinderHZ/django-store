@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block page-title %} Product Confirm Delete {% endblock %}
+
+{% block content %}
+
+<main>
+    <section id="form">
+        <!--form-->
+        <div class="col-sm-7 center">
+            <div class="signup-form">
+                <!--sign up form-->
+                <form action="" method="post" >
+                    <h1>Product Confirm Delete</h1>
+                    {% csrf_token %}
+                    <p>Are you sure you want to delete "{{ object }}"?</p>
+                    <input type="submit" value="Confirm" class="btn btn-primary" />
+                </form>
+                <!--/sign up form-->
+            </div>
+        </div>
+    </section>
+</main>
+
+{% endblock %}

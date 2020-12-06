@@ -11,15 +11,15 @@ Class-based views
     2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
 """
 
-from django.urls import path
+from django.urls import path, reverse_lazy
 
 from products.views import products_list, ProductDetailView
-from products.views import ProductCreateView, ProductUpdateView, product_delete
+from products.views import ProductCreateView, ProductUpdateView, ProductDeleteView
 
 urlpatterns = [
     path('products/', products_list, name='products_list'),
     path('products/<int:pk>/', ProductDetailView.as_view(), name='product_details'),
-    path('products/add/', ProductCreateView.as_view(), name='product_add'),
-    path('products/edit/<int:pk>/', ProductUpdateView.as_view(), name='product_edit'),
-    path('products/delete/<int:pk>/', product_delete, name='product_delete')
+    path('products/add/', ProductCreateView.as_view(success_url=reverse_lazy('products_list')), name='product_add'),
+    path('products/edit/<int:pk>/', ProductUpdateView.as_view(success_url=reverse_lazy('products_list')), name='product_edit'),
+    path('products/delete/<int:pk>/', ProductDeleteView.as_view(success_url=reverse_lazy('products_list')), name='product_delete')
 ]
