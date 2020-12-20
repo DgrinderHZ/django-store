@@ -2,12 +2,11 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.http.response import HttpResponseBadRequest
 
 from .utils import send_confirmation_email
-from .forms import SignUpForm
+from .forms import SignUpForm, EditProfileForm
 from .tokens import confirm_email_token_generator
 from .models import User
 
 
-# Create your views here.
 def signup(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
@@ -26,6 +25,19 @@ def signup(request):
                   {'form': form})
 
 
+def edit_profile(request):
+    if request.method == 'POST':
+        form = EditProfileForm(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            return redirect('user_detail')
+    else:
+        form = EditProfileForm(instance=request.user)
+    return render(request, 'registration/edit_profile.html', {
+        'form': form
+    })
+
+
 def activate_email(request, uid, token):
     user = get_object_or_404(User, pk=uid)
     if confirm_email_token_generator.check_token(user, token):
@@ -34,3 +46,7 @@ def activate_email(request, uid, token):
         return redirect('login')
     else:
         return HttpResponseBadRequest('Bad Token')
+
+
+def user_detail(request):
+    return render(request, 'registration/user_detail.html')
