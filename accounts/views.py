@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http.response import HttpResponseBadRequest
+from django.contrib.auth.decorators import login_required
 
 from .utils import send_confirmation_email
 from .forms import SignUpForm, EditProfileForm
@@ -24,7 +25,7 @@ def signup(request):
     return render(request, 'registration/signup.html',
                   {'form': form})
 
-
+@login_required
 def edit_profile(request):
     if request.method == 'POST':
         form = EditProfileForm(request.POST, instance=request.user)
@@ -47,6 +48,6 @@ def activate_email(request, uid, token):
     else:
         return HttpResponseBadRequest('Bad Token')
 
-
+@login_required
 def user_detail(request):
     return render(request, 'registration/user_detail.html')
