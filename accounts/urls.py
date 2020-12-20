@@ -15,8 +15,15 @@ urlpatterns = [
          ),
 
     path('accounts/password/',
-         auth_views.PasswordChangeView.as_view(template_name='registration/'),
+         auth_views.PasswordChangeView.as_view(
+             template_name='registration/password_change.html'
+         ),
          name="password_change"
+         ),
+
+    path('accounts/password/done/',
+         auth_views.PasswordChangeDoneView.as_view(),
+         name='password_change_done'
          ),
 
     path('accounts/password_reset/',
