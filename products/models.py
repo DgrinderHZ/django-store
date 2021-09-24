@@ -1,3 +1,4 @@
+from categories.models import Category
 from django.db import models
 from django.urls import reverse
 from django.db.models.signals import post_delete
@@ -13,6 +14,7 @@ class Product(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     brand = models.CharField(max_length=100)
     image = models.ImageField(upload_to='products', null=True)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
 
     def get_absolute_url(self):
         return reverse('product_details', args=(self.id,))

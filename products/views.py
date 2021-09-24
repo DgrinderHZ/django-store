@@ -1,3 +1,4 @@
+from categories.models import Category
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import DetailView, CreateView, UpdateView, DeleteView
 from .models import Product
@@ -7,8 +8,16 @@ from .forms import AddProductForm
 
 
 def products_list(request):
-    products = Product.objects.all()
-    params = {'products': products}
+    products = Product.objects.all()[:6]
+    categories = Category.objects.all()[:7]
+    params = {'products': products, 'categories': categories}
+    return render(request, 'products/products-list.html', params)
+
+
+def products_list_by_category(request, category_id):
+    products = Product.objects.filter(category_id=category_id)[:6]
+    categories = Category.objects.all()[:7]
+    params = {'products': products, 'categories': categories}
     return render(request, 'products/products-list.html', params)
 
 
