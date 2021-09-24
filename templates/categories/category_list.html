@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+<!--/slider-->
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-9 padding-right">
+                <div class="features_items">
+                    <!--features_items-->
+                    <h2 class="title text-center">Categories List</h2>
+                    {% for category in categories %}
+                    <div class="col-sm-4 ">
+                        <div class="product-image-wrapper">
+                            <div class="single-products">
+                                <div >
+                                    <div class="single-products">
+                                        <div class="productinfo text-center">
+                                            <h2>{{ category.title | capfirst }}</h2>
+                                            <a href="{% url 'category_edit' pk=category.id %}" class="btn btn-default add-to-cart"><i
+                                                    class="fa fa-shopping-cart"></i>Edit</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <img src="{% static 'images/home/new.png' %}" class="new" alt="" />
+                            </div>
+                        </div>
+                    </div>
+                    {% empty %}
+                    <p>No products yet.</p>
+                    {% endfor %}
+
+                </div>
+                <!--features_items-->
+
+            </div>
+        </div>
+    </div>
+</section>
+            
+    
+{% endblock %}

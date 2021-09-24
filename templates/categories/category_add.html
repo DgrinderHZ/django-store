@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block head-title %}Add/Edit Category{% endblock %}
+
+{% block content %}
+
+<main>
+    <section id="form"><!--form-->
+            
+        <div class="col-sm-7 center">
+            <div class="signup-form"><!--sign up form-->
+                <h1>Add/Edit Category</h1>
+                <h2> Please fill in the category info!!</h2>
+                <form action="" method="post" enctype="multipart/form-data" class="label-left">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn btn-default">Save!</button>
+                </form>
+            </div><!--/sign up form-->
+        </div>
+    
+    </section><!--/form-->
+</main>
+{% endblock %}
