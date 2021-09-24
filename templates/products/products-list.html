@@ -84,7 +84,7 @@
                         <div class="brands-name">
                             <ul class="nav nav-pills nav-stacked">
                                 {% for c in categories %}
-                                <li><a href="{% url 'products_by_category' category_id=c.id %}"><span class="pull-right">(50)</span>{{c.title}}</a></li>
+                                <li><a href="{% url 'products_by_category' category_id=c.id %}"><span class="pull-right">({{c.products_count}})</span>{{c.title}}</a></li>
                                 {% endfor %}
                             </ul>
                         </div>
