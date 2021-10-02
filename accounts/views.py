@@ -25,6 +25,7 @@ def signup(request):
     return render(request, 'registration/signup.html',
                   {'form': form})
 
+
 @login_required
 def edit_profile(request):
     if request.method == 'POST':
@@ -47,6 +48,7 @@ def activate_email(request, uid, token):
         return redirect('login')
     else:
         return HttpResponseBadRequest('Bad Token')
+
 
 @login_required
 def user_detail(request):

@@ -3,21 +3,64 @@
 {% block page-title %} Edit profile {% endblock %}
 
 {% block content %}
-<main>
-    <section>
-        <h1>User Profile</h1>
-        <div class="container">
-                <div class="col-sm-10">
-                    <p><b>Username: </b> {{ request.user.username | capfirst }}</p>
-                    <p><b>First name: </b>{{ request.user.first_name | capfirst }}</p>
-                    <p><b>Last name: </b>{{ request.user.last_name | capfirst }}</p>
-                    <p><b>Email: </b>{{ request.user.email }}</p>
 
-                    <a href="{% url 'edit_profile' %}" class="btn btn-primary">Edit</a>
-                </div>
+<section id="cart_items">
+    <div class="container">
+        <div class="table-responsive cart_info">
+            <h1>User Profile</h1>
+            <table class="table table-condensed">
+                <thead>
+                    <tr class="cart_menu">
+                        <td>Field</td>
+                        <td class="description">Value</td>
+                        <td></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="cart_description">
+                            <h4>Username</h4>
+                        </td>
+                        <td class="cart_description">
+                            <h6>{{ request.user.username | capfirst }}</h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="cart_description">
+                            <h4>First name</h4>
+                        </td>
+                        <td class="cart_description">
+                            <h6>{{ request.user.first_name | capfirst }}</h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="cart_description">
+                            <h4>Last name</h4>
+                        </td>
+                        <td class="cart_description">
+                            <h6>{{ request.user.last_name | capfirst }}</h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="cart_description">
+                            <h4>Email</h4>
+                        </td>
+                        <td class="cart_description">
+                            <h6>{{ request.user.email }}</h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="cart_description">
+                            <div class="col-sm-10">
+                                <a href="{% url 'edit_profile' %}" class="btn btn-primary">Edit</a>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-    </section>
-</main>
-
+    </div>
+    
+</section>
 
 {% endblock %}

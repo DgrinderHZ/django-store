@@ -18,7 +18,7 @@ def products_list_by_category(request, category_id):
     products = Product.objects.filter(category_id=category_id)[:6]
     categories = Category.objects.all()[:7]
     params = {'products': products, 'categories': categories}
-    return render(request, 'products/products-list.html', params)
+    return render(request, 'categories/products-list-by-cat.html', params)
 
 
 class ProductDetailView(DetailView):
