@@ -12,4 +12,5 @@ urlpatterns = [
 # ViewSets
 router = DefaultRouter()
 router.register('api/category', CategoryViewSet, basename='category')
+router.register('api/product', CategoryViewSet, basename='product')
 urlpatterns += router.urls

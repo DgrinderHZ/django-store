@@ -15,7 +15,7 @@ class Product(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     brand = models.CharField(max_length=100)
     image = models.ImageField(upload_to='products', null=True)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, related_name='products', on_delete=models.CASCADE)
 
     def get_absolute_url(self):
         return reverse('product_details', args=(self.id,))
