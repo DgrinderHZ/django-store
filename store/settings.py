@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'orders',
     'categories',
     'rest_framework',
+    'rest_framework_swagger',
     'api',
 ]
 
@@ -141,3 +142,12 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # EMAIL_FILE_PATH = os.path.join(BASE_DIR, 'sent_emails')
+
+
+
+# API
+# Django REST Framework settings
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS':
+    'rest_framework.schemas.coreapi.AutoSchema',
+}
