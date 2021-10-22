@@ -36,14 +36,30 @@ class UserLoginView(APIView):
 
 
 class CategoryViewSet(ModelViewSet):
+    """
+    Class based view, viewset Based:
+    - List all code categories,
+    - Create,
+    - Retrieve,
+    - Update or
+    - Delete a category.
+    """
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
-    authentication_classes = (TokenAuthentication)
-    permission_classes = (IsAuthenticated)
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = (IsAuthenticated,)
 
 
 class ProductViewSet(ModelViewSet):
+    """
+    Class based view, viewset Based:
+    - List all code products,
+    - Create,
+    - Retrieve,
+    - Update or
+    - Delete a product.
+    """
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
-    authentication_classes = (TokenAuthentication)
-    permission_classes = (IsAuthenticated)
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = (IsAuthenticated,)
