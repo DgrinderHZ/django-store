@@ -3,6 +3,8 @@ from rest_framework import generics, status
 from rest_framework.views import APIView
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.response import Response
+from rest_framework.authentication import TokenAuthentication
+from rest_framework.permissions import IsAuthenticated
 
 from api.serializers import CategorySerializer,\
      ProductSerializer, UserSerializer
@@ -36,8 +38,12 @@ class UserLoginView(APIView):
 class CategoryViewSet(ModelViewSet):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
+    authentication_classes = (TokenAuthentication)
+    permission_classes = (IsAuthenticated)
 
 
 class ProductViewSet(ModelViewSet):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
+    authentication_classes = (TokenAuthentication)
+    permission_classes = (IsAuthenticated)
