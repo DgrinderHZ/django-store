@@ -2,3 +2,4 @@ djaongo302/
 .vscode/
 __pycache__/
 *.pyc
+venv/

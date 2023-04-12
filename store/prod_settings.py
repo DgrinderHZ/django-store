@@ -13,7 +13,9 @@ if debug_option == 'true':
 else:
     DEBUG = False
 
-ALLOWED_HOSTS = ['zeek-store.herokuapp.com', 'ZeekZone.pythonanywhere.com']
+ALLOWED_HOSTS = ['zeek-store.herokuapp.com',
+                  'ZeekZone.pythonanywhere.com',
+                  'resfini_store.render.com']
 DATABASE_URL = os.environ.get('DATABASE_URL')
 
 DATABASES = {
